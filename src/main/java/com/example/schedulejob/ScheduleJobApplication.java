@@ -11,4 +11,12 @@ public class ScheduleJobApplication {
     public static void main(String[] args) {
         SpringApplication.run(ScheduleJobApplication.class, args);
     }
+
+
+    @PostConstruct
+    public void post(){
+        System.out.println("home v1");
+    }
+
+
 }
