@@ -1,24 +1,28 @@
 package com.example.schedulejob;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 
-import javax.annotation.PostConstruct;
+import java.util.Date;
 
 @SpringBootApplication
-@EnableScheduling
 public class ScheduleJobApplication {
+    Logger logger = LoggerFactory.getLogger(ScheduleJobApplication.class);
 
     public static void main(String[] args) {
         SpringApplication.run(ScheduleJobApplication.class, args);
     }
 
 
-    @PostConstruct
-    public void post(){
-        System.out.println("home v1");
+    @Scheduled(fixedRate = 60000L)  // 60 saniye
+    public void job() {
+        logger.info("Job :" + new Date());
     }
+
+
 
 
 }
